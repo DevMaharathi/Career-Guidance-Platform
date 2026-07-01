@@ -366,9 +366,9 @@ def submit_feedback():
     
     return jsonify({"error": "Message is empty"}), 400
 
-# ==========================================
+
 # ADMIN DASHBOARD
-# ==========================================
+
 @app.route('/admin')
 def admin_dashboard():
     if 'username' not in session or session['username'] != 'admin':
