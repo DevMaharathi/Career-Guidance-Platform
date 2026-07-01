@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | CAREER GUIDE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body style="display: flex; justify-content: center; align-items: center; background: var(--bg-deep);">
+    <div class="card fade-in" style="width: 400px;">
+        <h2 class="gradient-text" style="text-align: center; margin-bottom: 2rem;">Welcome Back</h2>
+        
+        <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+            <button onclick="toggleAuth('login')" id="login-tab" class="btn btn-primary" style="flex: 1;">Login</button>
+            <button onclick="toggleAuth('signup')" id="signup-tab" class="btn btn-secondary" style="flex: 1;">Sign Up</button>
+        </div>
+
+       <form id="login-form" action="/login" method="POST">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+</form>
+
+        <form id="signup-form" action="/register" method="POST" style="display: none;">
+            <input type="text" name="username" placeholder="Choose Username" required style="margin-bottom: 1rem;">
+            <input type="password" name="password" placeholder="Create Password" required style="margin-bottom: 1.5rem;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleAuth(type) {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const lTab = document.getElementById('login-tab');
+            const sTab = document.getElementById('signup-tab');
+
+            if(type === 'signup') {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+                sTab.className = "btn btn-primary";
+                lTab.className = "btn btn-secondary";
+            } else {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+                lTab.className = "btn btn-primary";
+                sTab.className = "btn btn-secondary";
+            }
+        }
+    </script>
+</body>
+</html>
